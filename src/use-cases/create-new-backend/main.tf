@@ -25,6 +25,7 @@ module "ec2-role" {
 module "ecs-cluster-with-service-and-task" {
   source                      = "../../containers/modules/ecs-cluster-with-service-and-task"
   app_name                    = var.app_name
+  cluster_name                = var.cluster_name
   app_port                    = var.app_port
   ecr_repository_url          = module.ecr-repository.ecr_repository_url
   ecs_task_execution_role_arn = module.ecs-task-execution-role.arn

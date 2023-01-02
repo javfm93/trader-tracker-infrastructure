@@ -1,14 +1,30 @@
-variable "region" {}
+variable "region" {
+  type = string
+}
 
-variable "ecs-ami" {}
+variable "ecs-ami" {
+  type = string
+}
 
-variable "instance_type" {}
+variable "instance_type" {
+  type = string
+}
 
-variable "app_name" {}
+variable "app_name" {
+  type = string
+}
 
-variable "app_port" {}
+variable "cluster_name" {
+  type = string
+}
 
-variable "vpc_cidr_block" {}
+variable "app_port" {
+  type = number
+}
+
+variable "vpc_cidr_block" {
+  type = string
+}
 
 variable "vpc_public_subnets" {
   type = list(object({

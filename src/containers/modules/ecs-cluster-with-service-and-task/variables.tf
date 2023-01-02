@@ -25,3 +25,7 @@ variable "elb_name" {
 variable "parameters" {
   type = list(object({ name = string, valueFrom = string }))
 }
+
+variable "cluster_name" {
+  type = string
+}

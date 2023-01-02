@@ -4,7 +4,7 @@
 #   service_role: service-linked role with to manage scaling, launch, destruction...
 
 resource "aws_ecs_cluster" "this" {
-  name = "${var.app_name}-ecs-cluster"
+  name = "${var.cluster_name}-ecs-cluster"
 }
 
 resource "aws_ecs_task_definition" "this" {
