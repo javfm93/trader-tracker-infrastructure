@@ -17,7 +17,7 @@ resource "aws_ecs_service" "this" {
   name            = "${var.app_name}-ecs-service"
   cluster         = aws_ecs_cluster.this.id
   task_definition = aws_ecs_task_definition.this.arn
-  desired_count   = 2
+  desired_count   = 1
 
   load_balancer {
     elb_name       = var.elb_name
