@@ -24,6 +24,11 @@ resource "aws_ecs_service" "this" {
     container_name = "${var.app_name}-ecs-container"
     container_port = var.app_port
   }
+
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes        = ["task_definition"]
+  }
 }
 
 locals {
