@@ -1,19 +1,13 @@
-resource "aws_iam_role" "this" {
-  name               = "ECS-${var.app_name}-task-execution-role"
-  assume_role_policy = data.aws_iam_policy_document.assume-ecs-tasks.json
+module "task-execution-role" {
+  source   = "../../modules/iam-task-execution-role"
+  app_name = var.app_name
 }
 
 resource "aws_iam_role_policy" "this" {
   policy = data.aws_iam_policy_document.access-to-parameter-store.json
-  role   = aws_iam_role.this.id
-}
-
-resource "aws_iam_policy_attachment" "ec2-container-management-to-ecs-role" {
-  name       = "ecs-${var.app_name}-service-attachment"
-  roles      = [aws_iam_role.this.name]
-  policy_arn = "arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy"
+  role   = module.task-execution-role.id
 }
 
 output "arn" {
-  value = aws_iam_role.this.arn
+  value = module.task-execution-role.arn
 }
