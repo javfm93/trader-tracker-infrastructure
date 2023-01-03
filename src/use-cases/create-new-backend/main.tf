@@ -19,6 +19,7 @@ module "ecr-repository" {
 module "ecs-task-execution-role" {
   source     = "../../iam/use-cases/create-task-execution-role-with-ssm-access"
   parameters = var.ssm_parameters
+  app_name   = var.app_name
 }
 
 module "cloudwatch" {
