@@ -26,6 +26,10 @@ variable "parameters" {
   type = list(object({ name = string, valueFrom = string }))
 }
 
-variable "cluster_name" {
+variable "cluster_id" {
   type = string
+}
+
+variable "desired_tasks" {
+  type = number
 }

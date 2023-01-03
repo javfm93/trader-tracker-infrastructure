@@ -3,10 +3,6 @@
 #   task_role: role injected to the app to access other aws resources
 #   service_role: service-linked role with to manage scaling, launch, destruction...
 
-resource "aws_ecs_cluster" "this" {
-  name = "${var.cluster_name}-ecs-cluster"
-}
-
 resource "aws_ecs_task_definition" "this" {
   execution_role_arn    = var.ecs_task_execution_role_arn
   container_definitions = local.container_definition
@@ -15,9 +11,9 @@ resource "aws_ecs_task_definition" "this" {
 
 resource "aws_ecs_service" "this" {
   name            = "${var.app_name}-ecs-service"
-  cluster         = aws_ecs_cluster.this.id
+  cluster         = var.cluster_id
   task_definition = aws_ecs_task_definition.this.arn
-  desired_count   = 1
+  desired_count   = var.desired_tasks
 
   load_balancer {
     elb_name       = var.elb_name

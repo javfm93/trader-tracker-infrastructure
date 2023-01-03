@@ -2,19 +2,11 @@ variable "region" {
   type = string
 }
 
-variable "ecs-ami" {
-  type = string
-}
-
-variable "instance_type" {
-  type = string
-}
-
 variable "app_name" {
   type = string
 }
 
-variable "cluster_name" {
+variable "cluster_id" {
   type = string
 }
 
@@ -22,28 +14,19 @@ variable "app_port" {
   type = number
 }
 
-variable "vpc_cidr_block" {
+variable "ssm_parameters" {
+  description = "List of ssm parameters to inject as env vars"
+  type        = list(object({ name = string, valueFrom = string }))
+}
+
+variable "vpc_id" {
   type = string
 }
 
-variable "vpc_public_subnets" {
-  type = list(object({
-    cidr              = string
-    availability_zone = string
-  }))
+variable "desired_tasks" {
+  type = number
 }
 
-variable "vpc_private_subnets" {
-  type = list(object({
-    cidr              = string
-    availability_zone = string
-  }))
-}
-
-variable "cidr_blocks" {
-  type = map(string)
-}
-
-variable "parameters" {
-  type = list(object({ name = string, valueFrom = string }))
+variable "elb_name" {
+  type = string
 }

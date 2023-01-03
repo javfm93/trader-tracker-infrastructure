@@ -30,13 +30,14 @@ module "internet-gateway" {
   vpc_id            = module.vpc.id
 }
 
-module "nat" {
-  source             = "../../modules/nat"
-  app_name           = var.app_name
-  private_subnets_id = module.private-subnets.ids
-  public_subnet_id   = module.public-subnets.ids[0]
-  vpc_id             = module.vpc.id
-}
+# disabled because cost money per month
+#module "nat" {
+#  source             = "../../modules/nat"
+#  app_name           = var.app_name
+#  private_subnets_id = module.private-subnets.ids
+#  public_subnet_id   = module.public-subnets.ids[0]
+#  vpc_id             = module.vpc.id
+#}
 
 output "vpc_id" {
   value = module.vpc.id
