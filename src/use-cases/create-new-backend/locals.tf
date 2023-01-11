@@ -6,7 +6,7 @@ locals {
       protocol        = "tcp"
       to_port         = var.app_port
       cidr_blocks     = null
-      security_groups = [var.private_alb.security_group_id]
+      security_groups = [var.alb.security_group_id]
     },
     {
       description     = "ssh, TODO: only allow my ip as cidr"

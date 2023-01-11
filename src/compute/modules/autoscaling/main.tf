@@ -5,7 +5,7 @@ resource "aws_launch_configuration" "this" {
   key_name             = var.key_pair_name
   iam_instance_profile = var.iam_instance_profile_id
   security_groups      = var.security_groups_id
-  user_data            = "#!/bin/bash\necho 'ECS_CLUSTER=${var.app_name}-ecs-cluster' > /etc/ecs/ecs.config\nstart ecs"
+  user_data            = "#!/bin/bash\necho 'ECS_CLUSTER=${var.cluster_name}-ecs-cluster' > /etc/ecs/ecs.config\nstart ecs"
   lifecycle { create_before_destroy = true }
 }
 

@@ -6,6 +6,10 @@ variable "app_name" {
   type = string
 }
 
+variable "cluster_name" {
+  type = string
+}
+
 variable "cluster_id" {
   type = string
 }
@@ -39,7 +43,7 @@ variable "public_key_path" {
   type = string
 }
 
-variable "private_alb" {
+variable "alb" {
   type = object({
     listener_arn      = string
     security_group_id = string
@@ -57,6 +61,6 @@ variable "app_target_group" {
 
 }
 
-variable "private_subnets_id" {
+variable "subnets_id" {
   type = list(string)
 }

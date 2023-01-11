@@ -14,7 +14,7 @@ resource "aws_alb_listener_rule" "alb_listener_rule" {
 
 // The configuration to hit a concrete service
 resource "aws_alb_target_group" "this" {
-  name     = "${var.app_name}-target-group"
+  name     = "${var.app_name}-tg"
   port     = var.target_group.port
   protocol = var.target_group.protocol
   vpc_id   = var.vpc_id

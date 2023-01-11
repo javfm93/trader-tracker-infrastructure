@@ -10,8 +10,8 @@ output "public_alb_listener_arn" {
   value = module.public-alb.listener_arn
 }
 
-output "private_alb_dns" {
-  value = module.private-alb.dns
+output "public_alb_security_group_id" {
+  value = module.public-alb-security-group.id
 }
 
 output "private_alb_name" {
