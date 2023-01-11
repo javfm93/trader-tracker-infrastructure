@@ -1,5 +1,6 @@
 module "ec2-role" {
-  source = "../../modules/iam-ec2-role-with-instance-profile"
+  source   = "../../modules/iam-ec2-role-with-instance-profile"
+  app_name = var.app_name
 }
 
 resource "aws_iam_role_policy_attachment" "ecs_agent" {

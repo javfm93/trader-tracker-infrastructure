@@ -20,7 +20,8 @@ module "ecs-cluster-with-service-and-task" {
 }
 
 module "ec2-role" {
-  source = "../../iam/use-cases/create-ec2-for-ecs-role"
+  source   = "../../iam/use-cases/create-ec2-for-ecs-role"
+  app_name = var.app_name
 }
 
 module "key-pair" {
