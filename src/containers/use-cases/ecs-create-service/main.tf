@@ -16,9 +16,9 @@ resource "aws_ecs_service" "this" {
   desired_count   = var.desired_tasks
 
   load_balancer {
-    elb_name       = var.elb_name
-    container_name = "${var.app_name}-ecs-container"
-    container_port = var.app_port
+    target_group_arn = var.target_group_arn
+    container_name   = "${var.app_name}-ecs-container"
+    container_port   = var.app_port
   }
 
   lifecycle {

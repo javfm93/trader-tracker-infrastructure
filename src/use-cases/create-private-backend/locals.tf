@@ -1,13 +1,12 @@
-# todo: security groups are not being created
 locals {
-  allow_ssh_and_elb_ingress_configurations = [
+  allow_ssh_and_elb_ingress_rules = [
     {
       description     = "Communication with app"
       from_port       = var.app_port
       protocol        = "tcp"
       to_port         = var.app_port
       cidr_blocks     = null
-      security_groups = [module.elb-security-group.id]
+      security_groups = [var.private_alb.security_group_id]
     },
     {
       description     = "ssh, TODO: only allow my ip as cidr"
@@ -19,7 +18,7 @@ locals {
     }
   ]
 
-  elb_ingress_configurations = [
+  public_alb_ingress_rules = [
     {
       description     = "From anywhere to elb port"
       from_port       = 80

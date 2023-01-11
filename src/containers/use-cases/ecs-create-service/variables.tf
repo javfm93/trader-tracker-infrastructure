@@ -18,7 +18,7 @@ variable "ecr_repository_url" {
   type = string
 }
 
-variable "elb_name" {
+variable "target_group_arn" {
   type = string
 }
 

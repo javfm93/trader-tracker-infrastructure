@@ -4,7 +4,7 @@ resource "aws_security_group" "this" {
   vpc_id      = var.vpc_id
 
   dynamic "ingress" {
-    for_each = var.ingress_configurations
+    for_each = var.ingress_rules
     content {
       description     = ingress.value.description
       from_port       = ingress.value.from_port

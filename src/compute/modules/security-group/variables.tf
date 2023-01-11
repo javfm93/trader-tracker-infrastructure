@@ -14,7 +14,7 @@ variable "description" {
   type = string
 }
 
-variable "ingress_configurations" {
+variable "ingress_rules" {
   type = list(object({
     description     = string
     from_port       = number

@@ -30,14 +30,14 @@ module "internet-gateway" {
   vpc_id            = module.vpc.id
 }
 
-# disabled because cost money per month
-#module "nat" {
-#  source             = "../../modules/nat"
-#  app_name           = var.app_name
-#  private_subnets_id = module.private-subnets.ids
-#  public_subnet_id   = module.public-subnets.ids[0]
-#  vpc_id             = module.vpc.id
-#}
+// the nat is necessary to register ec2 instances into the cluster
+module "nat" {
+  source             = "../../modules/nat"
+  app_name           = var.app_name
+  private_subnets_id = module.private-subnets.ids
+  public_subnet_id   = module.public-subnets.ids[0]
+  vpc_id             = module.vpc.id
+}
 
 output "vpc_id" {
   value = module.vpc.id
@@ -45,4 +45,9 @@ output "vpc_id" {
 
 output "public_subnets_ids" {
   value = module.public-subnets.ids
+}
+
+
+output "private_subnets_ids" {
+  value = module.private-subnets.ids
 }

@@ -18,7 +18,7 @@ variable "app_port" {
   type = number
 }
 
-variable "public_subnets_id" {
+variable "subnets_id" {
   type = list(string)
 }
 
@@ -34,6 +34,6 @@ variable "security_groups_id" {
   type = list(string)
 }
 
-variable "load_balancers_name" {
+variable "target_group_arns" {
   type = list(string)
 }

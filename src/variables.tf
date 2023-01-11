@@ -60,8 +60,61 @@ variable "vpc_private_subnets" {
 }
 
 variable "cidr_blocks" {
-  type = map(string)
+  type    = map(string)
   default = {
     all_ip_addresses = "0.0.0.0/0"
+  }
+}
+
+variable "private_alb_config" {
+  type = object({
+    ingress_rules = list(object({
+      description     = string
+      from_port       = number
+      to_port         = number
+      protocol        = string
+      cidr_blocks     = list(string)
+      security_groups = list(string)
+    }))
+  })
+  description = "Private ALB configuration"
+  default     = {
+    ingress_rules = [
+      {
+        description     = "Enable communication with internal ports"
+        from_port       = 80
+        to_port         = 5000
+        protocol        = "tcp"
+        cidr_blocks     = ["10.0.0.0/16"]
+        security_groups = null
+      }
+    ]
+  }
+}
+
+
+variable "public_alb_config" {
+  type = object({
+    ingress_rules = list(object({
+      description     = string
+      from_port       = number
+      to_port         = number
+      protocol        = string
+      cidr_blocks     = list(string)
+      security_groups = list(string)
+    }))
+  })
+  description = "Public ALB configuration"
+  default     = {
+    ingress_rules = [
+      {
+        description     = "Enable communication on default port"
+        from_port       = 80
+        to_port         = 80
+        protocol        = "tcp"
+        cidr_blocks     = ["0.0.0.0/0"]
+        security_groups = null
+      }
+    ]
   }
 }
