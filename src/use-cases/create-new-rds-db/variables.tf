@@ -2,7 +2,11 @@ variable "app_name" {
   type = string
 }
 
-variable "port" {
+variable "db_port" {
+  type = string
+}
+
+variable "vpc_id" {
   type = string
 }
 
@@ -21,14 +25,6 @@ variable "engine" {
   })
 }
 
-variable "security_group_ids" {
-  type = string
-}
-
-variable "username" {
-  type = string
-}
-
-variable "password" {
-  type = string
+variable "allowed_security_group_ids" {
+  type = list(string)
 }
