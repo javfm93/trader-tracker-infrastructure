@@ -22,7 +22,7 @@ variable "engine" {
 }
 
 variable "security_group_ids" {
-  type = string
+  type = list(string)
 }
 
 variable "username" {
