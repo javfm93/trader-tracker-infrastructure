@@ -1,1 +1,1 @@
-terraform destroy -target aws_nat_gateway.this
+terraform destroy -target module.networking.module.nat.aws_nat_gateway.this
