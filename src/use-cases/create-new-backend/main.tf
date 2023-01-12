@@ -69,8 +69,3 @@ module "cloudwatch" {
   source   = "../../cloudwatch/modules/log-group"
   app_name = var.app_name
 }
-
-output "ecr-repository" {
-  value = module.ecr-repository.ecr_repository_url
-}
-
