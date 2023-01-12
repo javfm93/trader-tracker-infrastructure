@@ -21,7 +21,7 @@ module "db-security-group" {
       from_port       = var.db_port
       to_port         = var.db_port
       protocol        = "tcp"
-      security_groups = allowed_security_group_ids
+      security_groups = var.allowed_security_group_ids
     }
   ]
   vpc_id = var.vpc_id
