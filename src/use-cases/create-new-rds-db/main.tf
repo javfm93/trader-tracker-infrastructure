@@ -31,9 +31,9 @@ module "db-security-group" {
 module "database" {
   source             = "../../storage/modules/rds"
   app_name           = var.app_name
-  db_instance_class  = var.db_instance_class // "db.t4g.micro"
-  storage            = var.storage // 20
-  engine             = var.engine // "postgres", "14.5"
+  db_instance_class  = var.db_instance_class
+  storage            = var.storage
+  engine             = var.engine
   security_group_ids = [module.db-security-group.id]
   username           = random_string.username.result
   password           = random_string.password.result

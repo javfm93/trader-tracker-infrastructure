@@ -69,3 +69,10 @@ module "cloudwatch" {
   source   = "../../cloudwatch/modules/log-group"
   app_name = var.app_name
 }
+
+module "ecr-repository-name-parameter" {
+  source = "../../storage/use-cases/create-parameter"
+  name   = "/${var.app_name}/infrastructure/ecr/repository-url"
+  value  = module.ecr-repository.ecr_repository_url
+}
+
