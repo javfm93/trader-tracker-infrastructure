@@ -18,10 +18,12 @@ module "db-security-group" {
   description   = "Security Group for db"
   ingress_rules = [
     {
+      description     = "allow sg to access db"
       from_port       = var.db_port
       to_port         = var.db_port
       protocol        = "tcp"
       security_groups = var.allowed_security_group_ids
+      cidr_blocks     = null
     }
   ]
   vpc_id = var.vpc_id
