@@ -9,3 +9,7 @@ resource "aws_db_instance" "this" {
   username               = var.username
   password               = var.password
 }
+
+output "endpoint" {
+  value = aws_db_instance.this.endpoint
+}
