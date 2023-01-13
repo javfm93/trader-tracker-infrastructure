@@ -4,6 +4,7 @@ resource "aws_db_subnet_group" "this" {
 }
 
 resource "aws_db_instance" "this" {
+  identifier             = var.db_name
   db_name                = var.db_name
   instance_class         = var.db_instance_class
   allocated_storage      = var.storage
