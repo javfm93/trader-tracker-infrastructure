@@ -1,3 +1,8 @@
+resource "aws_db_subnet_group" "this" {
+  name       = "${var.db_name}-subnet-group"
+  subnet_ids = var.subnet_ids
+}
+
 resource "aws_db_instance" "this" {
   db_name                = var.db_name
   instance_class         = var.db_instance_class
@@ -9,6 +14,7 @@ resource "aws_db_instance" "this" {
   username               = var.username
   password               = var.password
   port                   = var.port
+  db_subnet_group_name   = aws_db_subnet_group.this.name
 }
 
 output "endpoint" {

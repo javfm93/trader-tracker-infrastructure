@@ -19,8 +19,8 @@ module "db-security-group" {
   ingress_rules = [
     {
       description     = "allow sg to access db"
-      from_port       = var.db_port
-      to_port         = var.db_port
+      from_port       = var.db.port
+      to_port         = var.db.port
       protocol        = "tcp"
       security_groups = var.allowed_security_group_ids
       cidr_blocks     = null
@@ -32,14 +32,15 @@ module "db-security-group" {
 // only on 1 availability zone due to the free tier
 module "database" {
   source             = "../../storage/modules/rds"
-  db_name            = var.db_name
-  db_instance_class  = var.db_instance_class
+  db_name            = var.db.name
+  db_instance_class  = var.db.instance_class
   storage            = var.storage
   engine             = var.engine
   security_group_ids = [module.db-security-group.id]
   username           = random_string.username.result
   password           = random_string.password.result
-  port               = var.db_port
+  port               = var.db.port
+  subnet_ids         = var.db.subnet_ids
 }
 
 module "database-username-parameter" {
