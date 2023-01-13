@@ -1,5 +1,5 @@
 resource "aws_db_instance" "this" {
-  db_name                = var.app_name
+  db_name                = var.db_name
   instance_class         = var.db_instance_class
   allocated_storage      = var.storage
   engine                 = var.engine.name

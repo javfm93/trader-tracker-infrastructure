@@ -2,15 +2,19 @@ variable "app_name" {
   type = string
 }
 
+variable "db_name" {
+  type = string
+}
+
 variable "db_port" {
   type = string
 }
 
-variable "vpc_id" {
+variable "db_instance_class" {
   type = string
 }
 
-variable "db_instance_class" {
+variable "vpc_id" {
   type = string
 }
 

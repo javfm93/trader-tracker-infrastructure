@@ -14,7 +14,7 @@ resource "random_string" "password" {
 module "db-security-group" {
   source        = "../../compute/modules/security-group"
   app_name      = var.app_name
-  name          = "trader-tracker-db"
+  name          = "db"
   description   = "Security Group for db"
   ingress_rules = [
     {
@@ -32,7 +32,7 @@ module "db-security-group" {
 // only on 1 availability zone due to the free tier
 module "database" {
   source             = "../../storage/modules/rds"
-  app_name           = var.app_name
+  db_name            = var.db_name
   db_instance_class  = var.db_instance_class
   storage            = var.storage
   engine             = var.engine
