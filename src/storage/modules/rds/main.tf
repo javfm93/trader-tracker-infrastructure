@@ -16,6 +16,7 @@ resource "aws_db_instance" "this" {
   password               = var.password
   port                   = var.port
   db_subnet_group_name   = aws_db_subnet_group.this.name
+  skip_final_snapshot    = true
 }
 
 output "endpoint" {
