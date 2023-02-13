@@ -2,7 +2,7 @@ variable "region" {
   default = "eu-west-1"
 }
 
-variable "ecs-ami" {
+variable "ecs_ami" {
   default = "ami-00ce328eb1ed0570d" #amd ami
 }
 
@@ -60,7 +60,7 @@ variable "vpc_private_subnets" {
 }
 
 variable "cidr_blocks" {
-  type = map(string)
+  type    = map(string)
   default = {
     all_ip_addresses = "0.0.0.0/0"
   }
@@ -78,7 +78,7 @@ variable "private_alb_config" {
     }))
   })
   description = "Private ALB configuration"
-  default = {
+  default     = {
     ingress_rules = [
       {
         description     = "Enable communication with internal ports"
@@ -105,7 +105,7 @@ variable "public_alb_config" {
     }))
   })
   description = "Public ALB configuration"
-  default = {
+  default     = {
     ingress_rules = [
       {
         description     = "Enable communication on default port"
