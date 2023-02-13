@@ -1,5 +1,5 @@
 module "public-alb" {
-  source          = "../../modules/alb"
+  source          = "../../components/alb"
   app_name        = var.app_name
   subnets         = var.public_subnet_ids
   private         = false
@@ -7,7 +7,7 @@ module "public-alb" {
 }
 
 module "public-alb-security-group" {
-  source        = "../../modules/security-group"
+  source        = "../../components/security-group"
   name          = "public-alb"
   description   = "public alb security group"
   app_name      = var.app_name
@@ -16,7 +16,7 @@ module "public-alb-security-group" {
 }
 
 module "private-alb" {
-  source          = "../../modules/alb"
+  source          = "../../components/alb"
   app_name        = var.app_name
   subnets         = var.private_subnet_ids
   private         = true
@@ -24,7 +24,7 @@ module "private-alb" {
 }
 
 module "private-alb-security-group" {
-  source        = "../../modules/security-group"
+  source        = "../../components/security-group"
   name          = "private-alb"
   description   = "private alb security group"
   app_name      = var.app_name

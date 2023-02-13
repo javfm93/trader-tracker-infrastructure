@@ -1,11 +1,11 @@
 module "administrators-group" {
-  source            = "../../modules/sso-group"
+  source            = "../../components/sso-group"
   display_name      = "Administrators"
   identity_store_id = local.identity_store.id
 }
 
 module "administrator-user" {
-  source            = "../../modules/sso-user"
+  source            = "../../components/sso-user"
   display_name      = "Admin"
   group_id          = module.administrators-group.id
   identity_store_id = local.identity_store.id
@@ -16,7 +16,7 @@ module "administrator-user" {
 }
 
 module "administrator-permission-set" {
-  source             = "../../modules/sso-permission-set"
+  source             = "../../components/sso-permission-set"
   identity_store_arn = local.identity_store.arn
   managed_policy_arn = local.admin_policy
   name               = "AdministratorAccess"

@@ -1,5 +1,5 @@
 module "ec2-role" {
-  source   = "../../modules/iam-ec2-role-with-instance-profile"
+  source   = "../../components/iam-ec2-role-with-instance-profile"
   app_name = var.app_name
 }
 

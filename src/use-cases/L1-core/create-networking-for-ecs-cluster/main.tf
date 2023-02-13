@@ -22,6 +22,6 @@ module "create-load-balancers" {
 }
 
 module "ecs-cluster" {
-  source       = "../../../containers/modules/ecs"
+  source       = "../../../containers/components/ecs"
   cluster_name = var.cluster_name
 }

@@ -1,5 +1,5 @@
 module "task-execution-role" {
-  source   = "../../modules/iam-task-execution-role"
+  source   = "../../components/iam-task-execution-role"
   app_name = var.app_name
 }
 

@@ -2,13 +2,13 @@
 # lb in the public subnet and the servers in the private
 
 module "vpc" {
-  source         = "../../modules/vpc"
+  source         = "../../components/vpc"
   app_name       = var.app_name
   vpc_cidr_block = var.vpc_cidr_block
 }
 
 module "public-subnets" {
-  source      = "../../modules/subnet"
+  source      = "../../components/subnet"
   is_public   = true
   region      = var.region
   vpc_id      = module.vpc.id
@@ -16,7 +16,7 @@ module "public-subnets" {
 }
 
 module "private-subnets" {
-  source      = "../../modules/subnet"
+  source      = "../../components/subnet"
   is_public   = false
   region      = var.region
   vpc_id      = module.vpc.id
@@ -24,7 +24,7 @@ module "private-subnets" {
 }
 
 module "internet-gateway" {
-  source            = "../../modules/internet-gateway"
+  source            = "../../components/internet-gateway"
   app_name          = var.app_name
   public_subnets_id = module.public-subnets.ids
   vpc_id            = module.vpc.id
@@ -32,7 +32,7 @@ module "internet-gateway" {
 
 // the nat is necessary to register ec2 instances into the cluster
 module "nat" {
-  source             = "../../modules/nat"
+  source             = "../../components/nat"
   app_name           = var.app_name
   private_subnets_id = module.private-subnets.ids
   public_subnet_id   = module.public-subnets.ids[0]
