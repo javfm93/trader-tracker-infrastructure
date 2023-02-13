@@ -4,6 +4,7 @@ of the creator of the aws account with administrator credentials
 - Create AWS account
 - Create an admin user and copy access keys
 - Create a bucket in that account called `[company-name]-infrastructure`
+- Activate sso in the region in your desired region
 - Update the `provider.tf` file with your remote state bucket name
 - Run this Terraform script changing the `variables.tf` file
 - Follow the join instructions in the email received in the provided email
@@ -18,5 +19,5 @@ Once you are done you will have:
 - A new admin user in sso
 - A new admin group in sso
 - A new admin permission set
-- That admin group assigned to your root and production accounts
+- That admin group assigned to your production accounts
 

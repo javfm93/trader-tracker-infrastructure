@@ -3,6 +3,11 @@ resource "aws_identitystore_user" "this" {
   display_name      = var.display_name
   user_name         = var.user_name
 
+  name {
+    given_name  = var.name
+    family_name = var.lastname
+  }
+
   emails {
     value = var.user_email
   }

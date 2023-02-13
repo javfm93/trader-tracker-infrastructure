@@ -5,3 +5,7 @@ variable "policy_document_json" {
 variable "target_id" {
   type = string
 }
+
+variable "name" {
+  type = string
+}

@@ -1,3 +1,4 @@
+// makes sense to automate organization user, policy and bucket creation?
 module "organization" {
   source                         = "../../management/use-cases/create-initial-organization"
   production_account_owner_email = var.production_account_owner_email
@@ -13,4 +14,5 @@ module "sso" {
   source                = "../../management/use-cases/create-initial-sso-setup"
   admin_email           = var.admin_email
   production_account_id = module.organization.prod_account_id
+  depends_on            = [module.organization]
 }

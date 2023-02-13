@@ -6,12 +6,13 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "trader-tracker-infrastructure"
+    bucket = "trader-tracker-infrastructure-bucket"
     key    = "root.tfstate"
     region = "eu-west-1"
   }
 }
 
 provider "aws" {
-  region = "eu-west-1"
+  region  = "eu-west-1"
+  profile = "org"
 }

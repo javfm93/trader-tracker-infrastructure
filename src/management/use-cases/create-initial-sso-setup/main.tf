@@ -6,16 +6,18 @@ module "administrators-group" {
 
 module "administrator-user" {
   source            = "../../modules/sso-user"
-  display_name      = "Administrator"
+  display_name      = "Admin"
   group_id          = module.administrators-group.id
   identity_store_id = local.identity_store.id
   user_email        = var.admin_email
-  user_name         = "Administrator"
+  user_name         = "Admin"
+  lastname          = "Admin"
+  name              = "Powerful"
 }
 
 module "administrator-permission-set" {
   source             = "../../modules/sso-permission-set"
-  identity_store_arn = local.identity_store.id
+  identity_store_arn = local.identity_store.arn
   managed_policy_arn = local.admin_policy
   name               = "AdministratorAccess"
 }
@@ -29,11 +31,3 @@ resource "aws_ssoadmin_account_assignment" "this" {
   target_type        = "AWS_ACCOUNT"
 }
 
-resource "aws_ssoadmin_account_assignment" "on_main_acc" {
-  instance_arn       = local.identity_store.arn
-  permission_set_arn = module.administrator-permission-set.arn
-  principal_id       = module.administrators-group.id
-  principal_type     = "GROUP"
-  target_id          = data.aws_caller_identity.current.account_id
-  target_type        = "AWS_ACCOUNT"
-}
